@@ -40,6 +40,10 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
+  if (user && pathname === "/register") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
   return updateSession(request);
 }
 
