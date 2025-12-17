@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
         password,
     });
     if (!error) {
-        revalidatePath("/");
+        revalidatePath("/dashboard");
         return NextResponse.json({ success: true });
     }
 

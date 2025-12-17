@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SignInPage() {
+export default function LoginPage() {
   const router = useRouter();
   // State untuk mengelola input formulir
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ export default function SignInPage() {
 
     try {
       // Mengirim data ke Route Handler (API) Next.js
-      const response = await fetch("/api/signin", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default function SignInPage() {
 
       if (response.ok) {
         // Berhasil: Arahkan pengguna ke halaman utama
-        router.push("/");
+        router.push("/dashboard");
         router.refresh(); // Opsional: Memaksa refresh data Server Components
       } else {
         // Gagal: Ambil pesan error dari respons JSON
@@ -137,7 +137,7 @@ export default function SignInPage() {
         <p className="mt-10 text-center text-sm/6 text-gray-400">
           Don&apos;t have an account?{" "}
           <a
-            href="/signup"
+            href="/register"
             className="font-semibold text-indigo-400 hover:text-indigo-300"
           >
             Register Here

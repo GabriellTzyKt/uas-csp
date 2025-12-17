@@ -6,12 +6,12 @@ export async function POST(req: NextRequest) {
     const supabase = await createClient();
     const { email, password } = await req.json();
     
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.register({
         email,
         password,
     });
     if (!error) {
-        revalidatePath("/signin");
+        revalidatePath("/login");
         return NextResponse.json({ success: true });
     }
     return NextResponse.json(

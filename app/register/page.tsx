@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function SignUpPage() {
+export default function RegisterPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +29,7 @@ export default function SignUpPage() {
     }
     try {
       // Mengirim data ke Route Handler (API) Next.js
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default function SignUpPage() {
 
       if (response.ok) {
         // Berhasil: Arahkan pengguna ke halaman utama
-        router.push("/");
+        router.push("/dashboard");
         router.refresh(); // Opsional: Memaksa refresh data Server Components
       } else {
         // Gagal: Ambil pesan error dari respons JSON
@@ -62,7 +62,7 @@ export default function SignUpPage() {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          Flowbite
+          Register
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -166,7 +166,7 @@ export default function SignUpPage() {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <a
-                  href="/signin"
+                  href="/login"
                   className="font-medium text-indigo-500 dark:text-primary-500 hover:underline hover:text-indigo-300"
                 >
                   Login here

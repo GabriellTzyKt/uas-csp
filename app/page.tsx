@@ -15,7 +15,7 @@ export default function Home() {
       // Refresh router agar server component (seperti Navbar) dirender ulang
       router.refresh();
       // Arahkan ke halaman login
-      router.push("/signin");
+      router.push("/login");
     }
   };
 
